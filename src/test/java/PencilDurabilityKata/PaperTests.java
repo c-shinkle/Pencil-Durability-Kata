@@ -10,4 +10,10 @@ public class PaperTests {
     Paper paper = new Paper();
     assertEquals("", paper.getContent());
   }
+
+  @Test
+  public void whenConstructingAPaperWithTextItsContentsReturnText() {
+    Paper paper = new Paper("She sells sea shells");
+    assertEquals("She sells sea shells", paper.getContent());
+  }
 }
