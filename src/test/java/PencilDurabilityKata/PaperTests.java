@@ -39,7 +39,7 @@ public class PaperTests {
     Pencil pencil = new Pencil(3);
 
     pencil.write(paper, "text");
-    assertEquals("tex", paper.getContent());
+    assertEquals("tex ", paper.getContent());
   }
 
   @Test
@@ -48,6 +48,6 @@ public class PaperTests {
     Pencil pencil = new Pencil(0);
 
     pencil.write(paper, "text");
-    assertEquals("", paper.getContent());
+    assertEquals("    ", paper.getContent());
   }
 }

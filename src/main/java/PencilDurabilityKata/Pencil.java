@@ -16,7 +16,15 @@ public class Pencil {
     int lower = 0;
     for (int i=0; i<text.length(); i++) {
       if (pointDurability - upper*2 - lower == 0) {
-        paper.addText(text.substring(0, i));
+        StringBuilder sb = new StringBuilder(text.substring(0, i));
+        for (; i<text.length(); i++) {
+          char c = text.charAt(i);
+          if (Character.isWhitespace(c))
+            sb.append(c);
+          else
+            sb.append(' ');
+        }
+        paper.addText(sb.toString());
         pointDurability = 0;
         return;
       }
