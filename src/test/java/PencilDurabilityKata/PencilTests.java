@@ -25,7 +25,7 @@ public class PencilTests {
   }
 
   @Test
-  public void whenPencilWrites4LetterWordItloses4Points() {
+  public void whenPencilWrites4LetterLowercaseWordItloses4Points() {
     Pencil pencil = new Pencil(4);
     Paper paper = EasyMock.createMock(Paper.class);
 
