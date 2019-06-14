@@ -41,4 +41,13 @@ public class PaperTests {
     pencil.write(paper, "text");
     assertEquals("tex", paper.getContent());
   }
+
+  @Test
+  public void whenPencilHasNoPointsItWritesNothing() {
+    Paper paper = new Paper();
+    Pencil pencil = new Pencil(0);
+
+    pencil.write(paper, "text");
+    assertEquals("", paper.getContent());
+  }
 }
