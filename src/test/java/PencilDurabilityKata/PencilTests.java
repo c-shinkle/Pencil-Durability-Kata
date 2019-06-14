@@ -32,6 +32,7 @@ public class PencilTests {
     pencil.write(paper, "text");
     EasyMock.expectLastCall();
 
+    EasyMock.replay(paper);
     assertEquals(0, pencil.getPointDurability());
   }
 
@@ -43,6 +44,7 @@ public class PencilTests {
     pencil.write(paper, "Text");
     EasyMock.expectLastCall();
 
+    EasyMock.replay(paper);
     assertEquals(0, pencil.getPointDurability());
   }
 
@@ -54,6 +56,7 @@ public class PencilTests {
     pencil.write(paper, "She sells sea shells");
     EasyMock.expectLastCall();
 
+    EasyMock.replay(paper);
     assertEquals(2, pencil.getPointDurability());
   }
 
@@ -65,6 +68,7 @@ public class PencilTests {
     pencil.write(paper, "Text");
     EasyMock.expectLastCall();
 
+    EasyMock.replay(paper);
     assertEquals(0, pencil.getPointDurability());
   }
 }
