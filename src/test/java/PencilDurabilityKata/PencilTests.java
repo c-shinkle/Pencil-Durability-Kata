@@ -1,16 +1,22 @@
 package PencilDurabilityKata;
 
 import org.junit.Test;
+import org.junit.Before;
 import static org.junit.Assert.assertEquals;
 
 import org.easymock.EasyMock;
 
 public class PencilTests {
 
+  private Paper paper;
+
+  @Before
+  public void setup() {
+    paper = EasyMock.createMock(Paper.class);
+  }
+
   @Test
   public void whenPencilWritesOnBlankPaperItWritesTextOntoPaper() {
-    Paper paper = EasyMock.createMock(Paper.class);
-
     Pencil pencil = new Pencil();
     pencil.write(paper, "She sells sea shells");
     EasyMock.expectLastCall();
@@ -27,7 +33,6 @@ public class PencilTests {
   @Test
   public void whenPencilWrites4LetterLowercaseWordItLoses4Points() {
     Pencil pencil = new Pencil(4);
-    Paper paper = EasyMock.createMock(Paper.class);
 
     pencil.write(paper, "text");
     EasyMock.expectLastCall();
@@ -39,7 +44,6 @@ public class PencilTests {
   @Test
   public void whenPencilWrites4LetterCapitalizedWordItLosses5Points() {
     Pencil pencil = new Pencil(5);
-    Paper paper = EasyMock.createMock(Paper.class);
 
     pencil.write(paper, "Text");
     EasyMock.expectLastCall();
@@ -51,7 +55,6 @@ public class PencilTests {
   @Test
   public void whenPencilWritesMutlipleWordsItLoosesPointsForAllWords() {
     Pencil pencil = new Pencil(20);
-    Paper paper = EasyMock.createMock(Paper.class);
 
     pencil.write(paper, "She sells sea shells");
     EasyMock.expectLastCall();
@@ -63,7 +66,6 @@ public class PencilTests {
   @Test
   public void whenPencilRunsOutOfPointsItStopsAt0() {
     Pencil pencil = new Pencil(4);
-    Paper paper = EasyMock.createMock(Paper.class);
 
     pencil.write(paper, "Text");
     EasyMock.expectLastCall();
@@ -75,7 +77,6 @@ public class PencilTests {
   @Test
   public void whenDullPencilIsSharpenedItRegainsDurability() {
     Pencil pencil = new Pencil(4);
-    Paper paper = EasyMock.createMock(Paper.class);
 
     pencil.write(paper, "text");
     EasyMock.expectLastCall();
