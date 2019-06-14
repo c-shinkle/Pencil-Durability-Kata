@@ -23,4 +23,13 @@ public class PaperTests {
     paper.addText(" a pack of peppers");
     assertEquals("Pied Piper picked a pack of peppers", paper.getContent());
   }
+
+  @Test
+  public void whenPencilWritesTextItAddsTextToPaper() {
+    Paper paper = new Paper();
+    Pencil pencil = new Pencil();
+    pencil.write(paper, "This is text.");
+    
+    assertEquals("This is text.", paper.getContent());
+  }
 }
