@@ -15,10 +15,6 @@ public class PencilTests {
     pencil.write(paper, "She sells sea shells");
     EasyMock.expectLastCall();
 
-    EasyMock.expect(paper.getContent()).andReturn("She sells sea shells");
     EasyMock.replay(paper);
-
-    
-    assertEquals("She sells sea shells", paper.getContent());
   }
 }
