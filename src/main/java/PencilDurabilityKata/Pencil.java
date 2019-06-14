@@ -13,6 +13,7 @@ public class Pencil {
 
   public void write(Paper paper, String text) {
     paper.addText(text);
+    pointDurability -= text.length();
   }
 
   public int getPointDurability() {
