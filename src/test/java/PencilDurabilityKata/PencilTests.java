@@ -99,4 +99,18 @@ public class PencilTests {
     pencil.sharpen();
     assertEquals(9, pencil.getLength());
   }
+
+  @Test
+  public void whenPencilHasNoMoreLengthItCannotBeSharpened() {
+    Pencil pencil = new Pencil(4, 1);
+
+    pencil.sharpen();
+    pencil.write(paper, "text");
+    EasyMock.expectLastCall();
+    EasyMock.replay(paper);
+    pencil.sharpen();
+    
+    assertEquals(0, pencil.getLength());
+    assertEquals(0, pencil.getPointDurability());
+  }
 }

@@ -51,8 +51,10 @@ public class Pencil {
   }
 
   public void sharpen() {
-    pointDurability = maxDurability;
-    length--;
+    if (length > 0) {
+      pointDurability = maxDurability;
+      length--;
+    }
   }
 
   public int getLength() {
