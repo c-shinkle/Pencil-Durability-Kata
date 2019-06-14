@@ -17,4 +17,10 @@ public class PencilTests {
 
     EasyMock.replay(paper);
   }
+
+  @Test
+  public void whenPencilIsConstructedItHasAPointDurability() {
+    Pencil pencil = new Pencil(4);
+    assertEquals(4, pencil.getPointDurability());
+  }
 }
