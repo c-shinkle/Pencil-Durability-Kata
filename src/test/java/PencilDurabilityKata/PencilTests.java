@@ -34,4 +34,15 @@ public class PencilTests {
 
     assertEquals(0, pencil.getPointDurability());
   }
+
+  @Test
+  public void whenPencilWrites4LetterCapitalizedWordItlosses5Points() {
+    Pencil pencil = new Pencil(5);
+    Paper paper = EasyMock.createMock(Paper.class);
+
+    pencil.write(paper, "Text");
+    EasyMock.expectLastCall();
+
+    assertEquals(0, pencil.getPointDurability());
+  }
 }

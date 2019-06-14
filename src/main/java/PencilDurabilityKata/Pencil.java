@@ -13,7 +13,17 @@ public class Pencil {
 
   public void write(Paper paper, String text) {
     paper.addText(text);
-    pointDurability -= text.length();
+    //I need to count capital and lower case letters
+    int upper = 0;
+    int lower = 0;
+    for (int i=0; i<text.length(); i++) {
+      char c = text.charAt(i);
+      if (Character.isUpperCase(c)) 
+        upper++;
+      if (Character.isLowerCase(c))
+        lower++;
+    }
+    pointDurability -= upper*2 + lower;
   }
 
   public int getPointDurability() {
