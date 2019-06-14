@@ -45,4 +45,15 @@ public class PencilTests {
 
     assertEquals(0, pencil.getPointDurability());
   }
+
+  @Test
+  public void whenPencilWritesMutlipleWordsItLoosesPointsForAllWords() {
+    Pencil pencil = new Pencil(20);
+    Paper paper = EasyMock.createMock(Paper.class);
+
+    pencil.write(paper, "She sells sea shells");
+    EasyMock.expectLastCall();
+
+    assertEquals(2, pencil.getPointDurability());
+  }
 }
