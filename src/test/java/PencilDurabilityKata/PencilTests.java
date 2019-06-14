@@ -71,4 +71,19 @@ public class PencilTests {
     EasyMock.replay(paper);
     assertEquals(0, pencil.getPointDurability());
   }
+
+  @Test
+  public void whenDullPencilIsSharpenedItRegainsDurability() {
+    Pencil pencil = new Pencil(4);
+    Paper paper = EasyMock.createMock(Paper.class);
+
+    pencil.write(paper, "text");
+    EasyMock.expectLastCall();
+
+    EasyMock.replay(paper);
+
+    pencil.sharpen();
+
+    assertEquals(4, pencil.getPointDurability());
+  }
 }
