@@ -87,4 +87,16 @@ public class PencilTests {
 
     assertEquals(4, pencil.getPointDurability());
   }
+
+  @Test
+  public void whenPencilIsSharpenedItsLengthIsReduced() {
+    Pencil pencil = new Pencil(4, 10);
+
+    pencil.write(paper, "text");
+    EasyMock.expectLastCall();
+    EasyMock.replay(paper);
+
+    pencil.sharpen();
+    assertEquals(9, pencil.getLength());
+  }
 }

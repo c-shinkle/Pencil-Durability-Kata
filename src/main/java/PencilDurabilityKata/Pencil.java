@@ -1,16 +1,21 @@
 package PencilDurabilityKata;
 
 public class Pencil {
-  private int pointDurability;
+  private int pointDurability, length;
 
   private final int maxDurability;
 
   public Pencil() {
-    this(100);
+    this(100, 5);
   }
 
   public Pencil(int thePointDurability) {
+    this(thePointDurability, 5);
+  }
+
+  public Pencil(int thePointDurability, int theLength) {
     maxDurability = pointDurability = thePointDurability;
+    length = theLength;
   }
 
   public void write(Paper paper, String text) {
@@ -47,5 +52,10 @@ public class Pencil {
 
   public void sharpen() {
     pointDurability = maxDurability;
+    length--;
+  }
+
+  public int getLength() {
+    return length;
   }
 }
