@@ -23,7 +23,7 @@ public class Pencil {
       if (Character.isLowerCase(c))
         lower++;
     }
-    pointDurability -= upper*2 + lower;
+    pointDurability = Math.max(0, pointDurability - upper*2 - lower);
   }
 
   public int getPointDurability() {

@@ -56,4 +56,15 @@ public class PencilTests {
 
     assertEquals(2, pencil.getPointDurability());
   }
+
+  @Test
+  public void whenPencilRunsOutOfPointsItStopsAt0() {
+    Pencil pencil = new Pencil(4);
+    Paper paper = EasyMock.createMock(Paper.class);
+
+    pencil.write(paper, "Text");
+    EasyMock.expectLastCall();
+
+    assertEquals(0, pencil.getPointDurability());
+  }
 }
