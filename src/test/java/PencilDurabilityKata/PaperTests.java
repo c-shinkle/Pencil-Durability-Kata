@@ -16,4 +16,11 @@ public class PaperTests {
     Paper paper = new Paper("She sells sea shells");
     assertEquals("She sells sea shells", paper.getContent());
   }
+
+  @Test
+  public void whenAddingTextToPaperItAppendsToContent() {
+    Paper paper = new Paper("Pied Piper picked");
+    paper.addText(" a pack of peppers");
+    assertEquals("Pied Piper picked a pack of peppers", paper.getContent());
+  }
 }

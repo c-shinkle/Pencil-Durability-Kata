@@ -14,4 +14,8 @@ public class Paper {
   public String getContent() {
     return content;
   }
+
+  public void addText(String text) {
+    content += text;
+  }
 }
