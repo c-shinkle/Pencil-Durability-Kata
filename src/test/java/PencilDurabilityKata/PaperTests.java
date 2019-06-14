@@ -32,4 +32,13 @@ public class PaperTests {
     
     assertEquals("This is text.", paper.getContent());
   }
+
+  @Test
+  public void whenPencilRunsOutOfPointsItStopsWriting() {
+    Paper paper = new Paper();
+    Pencil pencil = new Pencil(3);
+
+    pencil.write(paper, "text");
+    assertEquals("tex", paper.getContent());
+  }
 }
