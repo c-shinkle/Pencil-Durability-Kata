@@ -4,7 +4,7 @@ public class Eraser {
   private int durability;
 
   public Eraser() {
-    durability = 3;
+    durability = 10;
   }
 
   public Eraser(int theDurability) {
@@ -16,8 +16,12 @@ public class Eraser {
     int start = content.lastIndexOf(text);
     int end = start + text.length();
     if (start >= 0) {
+      if (text.length() > durability) {
+        start += text.length() - durability;
+      }
+  
       paper.removeText(start, end);
-      durability -= end - start;
+      durability = Math.max(0, durability - text.length());
     }
   }
 

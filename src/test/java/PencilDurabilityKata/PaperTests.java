@@ -69,4 +69,13 @@ public class PaperTests {
     eraser.erase(paper, "chuck");
     assertEquals("Wood      could       wood", paper.getContent());
   }
+
+  @Test
+  public void whenEraserRunsOutOfDurabilityItStopsRemovingText() {
+    Paper paper = new Paper("Buffalo Bill");
+    Eraser eraser = new Eraser(3);
+
+    eraser.erase(paper, "Bill");
+    assertEquals("Buffalo B   ", paper.getContent());
+  }
 }
