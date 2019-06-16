@@ -59,4 +59,14 @@ public class PaperTests {
     eraser.erase(paper, "shells");
     assertEquals("She sells sea       ", paper.getContent());
   }
+
+  @Test
+  public void whenEraserErasesAWordTwicePaperLosesBothWords() {
+    Paper paper = new Paper("Woodchuck could chuck wood");
+    Eraser eraser = new Eraser();
+
+    eraser.erase(paper, "chuck");
+    eraser.erase(paper, "chuck");
+    assertEquals("Wood      could       wood", paper.getContent());
+  }
 }
