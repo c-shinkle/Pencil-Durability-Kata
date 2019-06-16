@@ -15,8 +15,10 @@ public class Eraser {
     String content = paper.getContent();
     int start = content.lastIndexOf(text);
     int end = start + text.length();
-    if (start >= 0)
+    if (start >= 0) {
       paper.removeText(start, end);
+      durability -= end - start;
+    }
   }
 
   public int getDurability() {
