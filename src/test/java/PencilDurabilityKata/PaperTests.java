@@ -50,4 +50,13 @@ public class PaperTests {
     pencil.write(paper, "text");
     assertEquals("    ", paper.getContent());
   }
+
+  @Test
+  public void whenEraserErasesAWordPaperLosesWord() {
+    Paper paper = new Paper("She sells sea shells");
+    Eraser eraser = new Eraser();
+
+    eraser.erase(paper, "shells");
+    assertEquals("She sells sea       ", paper.getContent());
+  }
 }
