@@ -5,17 +5,24 @@ public class Pencil {
 
   private final int maxDurability;
 
+  private Eraser eraser;
+
   public Pencil() {
-    this(100, 5);
+    this(100, 5, 3);
   }
 
   public Pencil(int thePointDurability) {
-    this(thePointDurability, 5);
+    this(thePointDurability, 5, 3);
   }
 
   public Pencil(int thePointDurability, int theLength) {
+    this(thePointDurability, theLength, 3);
+  }
+
+  public Pencil(int thePointDurability, int theLength, int eraserDurability) {
     maxDurability = pointDurability = thePointDurability;
     length = theLength;
+    eraser = new Eraser(eraserDurability);
   }
 
   public void write(Paper paper, String text) {
@@ -59,5 +66,9 @@ public class Pencil {
 
   public int getLength() {
     return length;
+  }
+
+  public Eraser getEraser() {
+    return eraser;
   }
 }
