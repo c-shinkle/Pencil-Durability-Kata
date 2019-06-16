@@ -19,13 +19,9 @@ public class Paper {
     content.append(text);
   }
 
-  public void removeText(String text) {
-    int start = content.lastIndexOf(text);
-    if (start >= 0) {
-      int end = start + text.length();
-      for (int i = start; i<end; i++) {
-        content.setCharAt(i, ' ');
-      }
+  public void removeText(int start, int end) {
+    for (int i = start; i<end; i++) {
+      content.setCharAt(i, ' ');
     }
   }
 }
