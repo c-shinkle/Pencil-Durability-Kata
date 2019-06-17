@@ -80,7 +80,7 @@ public class PaperTests {
   }
 
   @Test
-  public void whenPencilEditsTextItAddsTextInTheMiddleOfPaper() {
+  public void whenPencilEditsTextItAddsTextToWhiteSpace() {
     Paper paper = new Paper("An       a day keeps the doctor away");
     Pencil pencil = new Pencil();
 
