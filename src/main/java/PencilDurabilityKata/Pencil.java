@@ -26,6 +26,12 @@ public class Pencil {
   }
 
   public void write(Paper paper, String text) {
+    //for some reason, this line is throwing a null pointer
+    //probably due to mocking
+    write(paper, text, paper.getContent().length());
+  }
+
+  public void write(Paper paper, String text, int startIndex) {
     int upper = 0;
     int lower = 0;
     for (int i=0; i<text.length(); i++) {
@@ -38,7 +44,7 @@ public class Pencil {
           else
             sb.append(' ');
         }
-        paper.addText(sb.toString());
+        paper.addText(sb.toString(), startIndex);
         pointDurability = 0;
         return;
       }
@@ -50,7 +56,7 @@ public class Pencil {
         lower++;
     }
     pointDurability -= upper*2 + lower;
-    paper.addText(text);
+    paper.addText(text, startIndex);
   }
 
   public int getPointDurability() {

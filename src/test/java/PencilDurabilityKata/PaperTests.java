@@ -78,4 +78,13 @@ public class PaperTests {
     eraser.erase(paper, "Bill");
     assertEquals("Buffalo B   ", paper.getContent());
   }
+
+  @Test
+  public void whenPencilEditsTextItAddsTextInTheMiddleOfPaper() {
+    Paper paper = new Paper("An       a day keeps the doctor away");
+    Pencil pencil = new Pencil();
+
+    pencil.write(paper, "onion", 3);
+    assertEquals("An onion a day keeps the doctor away", paper.getContent());
+  }
 }

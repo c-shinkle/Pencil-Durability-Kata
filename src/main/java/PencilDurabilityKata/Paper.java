@@ -19,6 +19,11 @@ public class Paper {
     content.append(text);
   }
 
+  public void addText(String text, int start) {
+    int end = start+text.length();
+    content.replace(start, end, text);
+  }
+
   public void removeText(int start, int end) {
     for (int i = start; i<end; i++) {
       content.setCharAt(i, ' ');

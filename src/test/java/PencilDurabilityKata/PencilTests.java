@@ -13,15 +13,18 @@ public class PencilTests {
   @Before
   public void setup() {
     paper = EasyMock.createMock(Paper.class);
+    EasyMock.expect(paper.getContent()).andReturn("");
   }
 
   @Test
   public void whenPencilWritesOnBlankPaperItWritesTextOntoPaper() {
     Pencil pencil = new Pencil();
-    pencil.write(paper, "She sells sea shells");
-    EasyMock.expectLastCall();
 
+    paper.addText("She sells sea shells", 0);
+    EasyMock.expectLastCall();
     EasyMock.replay(paper);
+
+    pencil.write(paper, "She sells sea shells");
   }
 
   @Test
@@ -34,10 +37,11 @@ public class PencilTests {
   public void whenPencilWrites4LetterLowercaseWordItLoses4Points() {
     Pencil pencil = new Pencil(4);
 
-    pencil.write(paper, "text");
+    paper.addText("text", 0);
     EasyMock.expectLastCall();
-
     EasyMock.replay(paper);
+
+    pencil.write(paper, "text");
     assertEquals(0, pencil.getPointDurability());
   }
 
@@ -45,10 +49,11 @@ public class PencilTests {
   public void whenPencilWrites4LetterCapitalizedWordItLosses5Points() {
     Pencil pencil = new Pencil(5);
 
-    pencil.write(paper, "Text");
+    paper.addText("Text", 0);
     EasyMock.expectLastCall();
-
     EasyMock.replay(paper);
+
+    pencil.write(paper, "Text");
     assertEquals(0, pencil.getPointDurability());
   }
 
@@ -56,10 +61,11 @@ public class PencilTests {
   public void whenPencilWritesMutlipleWordsItLoosesPointsForAllWords() {
     Pencil pencil = new Pencil(20);
 
-    pencil.write(paper, "She sells sea shells");
+    paper.addText("She sells sea shells", 0);
     EasyMock.expectLastCall();
-
     EasyMock.replay(paper);
+
+    pencil.write(paper, "She sells sea shells");
     assertEquals(2, pencil.getPointDurability());
   }
 
@@ -67,10 +73,11 @@ public class PencilTests {
   public void whenPencilRunsOutOfPointsItStopsAt0() {
     Pencil pencil = new Pencil(4);
 
-    pencil.write(paper, "Text");
+    paper.addText("Tex ", 0);
     EasyMock.expectLastCall();
-
     EasyMock.replay(paper);
+
+    pencil.write(paper, "Text");
     assertEquals(0, pencil.getPointDurability());
   }
 
@@ -78,11 +85,11 @@ public class PencilTests {
   public void whenDullPencilIsSharpenedItRegainsDurability() {
     Pencil pencil = new Pencil(4);
 
-    pencil.write(paper, "text");
+    paper.addText("text", 0);
     EasyMock.expectLastCall();
-
     EasyMock.replay(paper);
 
+    pencil.write(paper, "text");
     pencil.sharpen();
 
     assertEquals(4, pencil.getPointDurability());
@@ -92,10 +99,11 @@ public class PencilTests {
   public void whenPencilIsSharpenedItsLengthIsReduced() {
     Pencil pencil = new Pencil(4, 10);
 
-    pencil.write(paper, "text");
+    paper.addText("text", 0);
     EasyMock.expectLastCall();
     EasyMock.replay(paper);
 
+    pencil.write(paper, "text");
     pencil.sharpen();
     assertEquals(9, pencil.getLength());
   }
@@ -104,10 +112,12 @@ public class PencilTests {
   public void whenPencilHasNoMoreLengthItCannotBeSharpened() {
     Pencil pencil = new Pencil(4, 1);
 
-    pencil.sharpen();
-    pencil.write(paper, "text");
+    paper.addText("text", 0);
     EasyMock.expectLastCall();
     EasyMock.replay(paper);
+    
+    pencil.sharpen();
+    pencil.write(paper, "text");
     pencil.sharpen();
     
     assertEquals(0, pencil.getLength());
