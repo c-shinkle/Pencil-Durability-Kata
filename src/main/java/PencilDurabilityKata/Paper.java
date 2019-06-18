@@ -24,8 +24,10 @@ public class Paper {
     for (index = 0; index<prevText.length(); index++) {
       char prevCh = prevText.charAt(index);
       char newCh = text.charAt(index);
-      if (prevCh == ' ') {
+      if (prevCh == ' ' ) {
         edittedText.append(newCh);
+      } else if (newCh == ' ') {
+        edittedText.append(prevCh);
       } else {
         edittedText.append('@');
       }

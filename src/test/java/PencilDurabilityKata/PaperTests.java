@@ -96,4 +96,13 @@ public class PaperTests {
     pencil.write(paper, "artichoke", 3);
     assertEquals("An artich@k@ay keeps the doctor away", paper.getContent());
   }
+
+  @Test
+  public void whenPencilRunsOutOfDurabilityWhileEdittingItStopsWriting() {
+    Paper paper = new Paper("An       a day keeps the doctor away");
+    Pencil pencil = new Pencil(8);
+
+    pencil.write(paper, "artichoke", 3);
+    assertEquals("An artich@kday keeps the doctor away", paper.getContent());
+  }
 }
