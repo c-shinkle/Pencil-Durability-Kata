@@ -20,7 +20,7 @@ public class PaperTests {
   @Test
   public void whenAddingTextToPaperItAppendsToContent() {
     Paper paper = new Paper("Pied Piper picked");
-    paper.addText(" a pack of peppers");
+    paper.addText(" a pack of peppers", 17);
     assertEquals("Pied Piper picked a pack of peppers", paper.getContent());
   }
 

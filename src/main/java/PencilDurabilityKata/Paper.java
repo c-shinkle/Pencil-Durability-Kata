@@ -15,10 +15,6 @@ public class Paper {
     return content.toString();
   }
 
-  public void addText(String text) {
-    content.append(text);
-  }
-
   public void addText(String text, int start) {
     int end = start+text.length();
     String prevText = content.substring(start, Math.min(end, content.length()));
@@ -38,7 +34,7 @@ public class Paper {
     while (index<text.length()) {
       edittedText.append(text.charAt(index++));
     }
-    
+
     content.replace(start, end, edittedText.toString());
   }
 
