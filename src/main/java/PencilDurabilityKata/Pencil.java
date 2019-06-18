@@ -30,10 +30,8 @@ public class Pencil {
   }
 
   public void write(Paper paper, String text, int startIndex) {
-    int upper = 0;
-    int lower = 0;
     for (int i=0; i<text.length(); i++) {
-      if (pointDurability - upper*2 - lower == 0) {
+        if (pointDurability == 0) {
         StringBuilder sb = new StringBuilder(text.substring(0, i));
         for (; i<text.length(); i++) {
           char c = text.charAt(i);
@@ -49,11 +47,10 @@ public class Pencil {
 
       char c = text.charAt(i);
       if (Character.isUpperCase(c)) 
-        upper++;
+        pointDurability -= 2;
       if (Character.isLowerCase(c))
-        lower++;
+        pointDurability--;
     }
-    pointDurability -= upper*2 + lower;
     paper.addText(text, startIndex);
   }
 
