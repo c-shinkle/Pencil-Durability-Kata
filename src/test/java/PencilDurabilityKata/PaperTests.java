@@ -87,4 +87,13 @@ public class PaperTests {
     pencil.write(paper, "onion", 3);
     assertEquals("An onion a day keeps the doctor away", paper.getContent());
   }
+
+  @Test
+  public void whenPencilEditsTextItAddsAtSymbolsToPreexistingChars() {
+    Paper paper = new Paper("An       a day keeps the doctor away");
+    Pencil pencil = new Pencil();
+
+    pencil.write(paper, "artichoke", 3);
+    assertEquals("An artich@k@ay keeps the doctor away", paper.getContent());
+  }
 }

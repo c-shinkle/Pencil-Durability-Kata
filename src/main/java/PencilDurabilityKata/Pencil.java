@@ -26,8 +26,6 @@ public class Pencil {
   }
 
   public void write(Paper paper, String text) {
-    //for some reason, this line is throwing a null pointer
-    //probably due to mocking
     write(paper, text, paper.getContent().length());
   }
 
