@@ -1,4 +1,4 @@
-# Christian Shinkle's Pencil Durability Kata Submission
+#Christian Shinkle's Pencil Durability Kata Submission
 
 The following are the tools I used to develop my submission and where:
 
